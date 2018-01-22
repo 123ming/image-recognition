@@ -14,23 +14,43 @@
 
 ### thresholdImg 函数
 
->   // const blockSize = 9   //计算局部阈值时的每个小窗口(每个局部)的大小,只能为奇数，最小值为3；<br/>
-    // const constValue = 0  // 阈值偏移值，函数最终使用的阈值为使用adaptiveMethod计算出的阈值减去C。<br/>
-    // const maxVal = 255    // 阈值化后的非零值<br/>
-    //<br/>
-    // 自适应阈值算法<br/>
-    // 0：ADAPTIVE_THRESH_MEAN_C<br/>
-    // 1: ADAPTIVE_THRESH_GAUSSIAN_C<br/>
-    // const adaptiveMethod = 0<br/>
-    //<br/>
-    // 阈值类型<br/>
-    // 0: THRESH_BINARY<br/>
-    // 1: THRESH_BINARY_INV<br/>
-    // const thresholdType = 0<br/>
-    //<br/>
-    // const  thresholdImg = blurImg.adaptiveThreshold(maxVal, adaptiveMethod, thresholdType, blockSize, constValue)<br/>
+>    const blockSize = 9   //计算局部阈值时的每个小窗口(每个局部)的大小,只能为奇数，最小值为3；<br/>
+     const constValue = 0  // 阈值偏移值，函数最终使用的阈值为使用adaptiveMethod计算出的阈值减去C。<br/>
+     const maxVal = 255    // 阈值化后的非零值<br/>
+    <br/>
+     自适应阈值算法<br/>
+     0：ADAPTIVE_THRESH_MEAN_C<br/>
+     1: ADAPTIVE_THRESH_GAUSSIAN_C<br/>
+     const adaptiveMethod = 0<br/>
+    <br/>
+     阈值类型<br/>
+     0: THRESH_BINARY<br/>
+     1: THRESH_BINARY_INV<br/>
+     const thresholdType = 0<br/>
+    <br/>
+     const  thresholdImg = blurImg.adaptiveThreshold(maxVal, adaptiveMethod, thresholdType, blockSize, constValue)<br/>
 
 
 ### medianBlur 中值滤波函数
 
 > 一个数字参数， 必须为奇数<br/>
+
+### 特征点提取
+> const detector = new cv.SIFTDetector()
+
+我这里采用的是SIFT检测算法<br/>
+
+### drawKeyPoints 特征点
+> const img = cv.drawKeyPoints(thrMat, keyPoints)
+
+thrMat      就是一个预处理后的mat类型图像<br/>
+keyPoints   由detector 的detect方法得出<br/>
+
+### drawCircle 画圆圈
+>img.drawCircle(keyPoints[index].point, 15, new cv.Vec(255, 255, 255) , cv.LINE_8 , 1 , 0)
+
+img    需要处理的mat类型图像 <br/>
+15     半径<br/>
+point  圆心坐标，point类型 { x: ..., y: ... } <br/>
+new cv.Vec(255, 255, 255)  画笔颜色<br/>
+后面参数都是默认值
