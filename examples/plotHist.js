@@ -1,6 +1,6 @@
-const cv = require('../');
+const cv = require('opencv4nodejs');
 
-const img = cv.imread('../data/Lenna.png');
+const img = cv.imread('../static/init/colors-5.jpg');
 
 // single axis for 1D hist
 const getHistAxis = channel => ([
@@ -26,9 +26,9 @@ cv.plot1DHist(bHist, plot, blue, { thickness: 2 });
 cv.plot1DHist(gHist, plot, green, { thickness: 2 });
 cv.plot1DHist(rHist, plot, red, { thickness: 2 });
 
-cv.imshow('rgb image', img);
-cv.imshow('rgb histogram', plot);
-cv.waitKey();
+// cv.imshow('rgb image', img);
+// cv.imshow('rgb histogram', plot);
+// cv.waitKey();
 
 const grayImg = img.bgrToGray();
 const grayHist = cv.calcHist(grayImg, getHistAxis(0));
@@ -38,4 +38,3 @@ cv.plot1DHist(grayHist, grayHistPlot, new cv.Vec(0, 0, 0));
 cv.imshow('grayscale image', grayImg);
 cv.imshow('grayscale histogram', grayHistPlot);
 cv.waitKey();
-

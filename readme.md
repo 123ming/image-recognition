@@ -1,4 +1,21 @@
-### canny 函数
+# 设计步骤
+
+### 图像预处理
+
+- 中值滤波处理
+>  medianBlur() 中值滤波函数<br/>
+   参数是一个数字， 必须为奇数<br/>
+
+- 拉普拉斯算法锐化
+>laplacian(-1, 1)
+
+- 灰度化处理
+> bgrToGray() 灰度化处理
+
+### 动态阈值分割
+
+
+### canny 函数  (边缘检测算法)
 
 >第三个参数，double类型的threshold1，第一个滞后性阈值。<br/>
 第四个参数，double类型的threshold2，第二个滞后性阈值。<br/>
@@ -31,9 +48,6 @@
      const  thresholdImg = blurImg.adaptiveThreshold(maxVal, adaptiveMethod, thresholdType, blockSize, constValue)<br/>
 
 
-### medianBlur 中值滤波函数
-
-> 一个数字参数， 必须为奇数<br/>
 
 ### 特征点提取
 > const detector = new cv.SIFTDetector()
