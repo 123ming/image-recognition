@@ -65,7 +65,8 @@ function imgCut (url) {
     number edgeThreshold = 10 ,
     number sigma = 1.6
 */
-    const detector = new cv.SIFTDetector(0, 3, 0.04, 50, 1.6)  // 构造一个sift检测器
+
+const detector = new cv.SIFTDetector(0, 3, 0.04, 50, 1.6)  // 构造一个sift检测器
 
 for (let i=0; i<url.length; i++) {
     const initMat = cv.imread(url[i])
@@ -80,6 +81,9 @@ for (let i=0; i<url.length; i++) {
 
     // img.drawCircle(keyPoints[index].point, 15, new cv.Vec(255, 255, 255) , cv.LINE_8 , 1 , 0)
 
-    cv.imshow('t', img)
-    cv.waitKey(1000)
+    // save image
+    cv.imwrite(`./static/build/new-${i}.png`, img);
+
+    // cv.imshow('t', img)
+    // cv.waitKey(1000)
 }
