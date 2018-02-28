@@ -60,7 +60,7 @@
 thrMat      就是一个预处理后的mat类型图像<br/>
 keyPoints   由detector 的detect方法得出<br/>
 
-### drawCircle 画圆圈
+### drawCircle 画圈
 >img.drawCircle(keyPoints[index].point, 15, new cv.Vec(255, 255, 255) , cv.LINE_8 , 1 , 0)
 
 img    需要处理的mat类型图像 <br/>
@@ -68,3 +68,10 @@ img    需要处理的mat类型图像 <br/>
 point  圆心坐标，point类型 { x: ..., y: ... } <br/>
 new cv.Vec(255, 255, 255)  画笔颜色<br/>
 后面参数都是默认值
+
+
+- 打印开题报告
+
+- 算法流程图
+
+- 参数优化
