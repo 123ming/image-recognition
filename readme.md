@@ -70,8 +70,31 @@ new cv.Vec(255, 255, 255)  画笔颜色<br/>
 后面参数都是默认值
 
 
-- 打印开题报告
+````js
+const blurMat = initMat.medianBlur(3)    // 中值滤波操作  // 数值越大图像越模糊
+const lapMat = blurMat.laplacian(-1, 5)
 
-- 算法流程图
+const blurMat = initMat.gaussianBlur(new cv.Size(7, 7), 0)  // 高斯滤波操作
+const lapMat = blurMat.laplacian(-1, 3)
+/*
+	拉普拉斯算子锐化
 
-- 参数优化
+	第一个参数是图像的深度，-1表示采用的是与原图像相同的深度。
+	目标图像的深度必须大于等于原图像的深度
+
+	第二个参数，越大锐化结果越清晰
+*/
+
+const eqMat = garyMat.equalizeHist()   // 灰度直方图均衡化 （效果很不好）
+
+
+const keyPoints = detector.detect(thrMat)  // 得到特征点数组集合
+
+console.log(keyPoints[0].point)
+
+const img = cv.drawKeyPoints(initMat, keyPoints)   // 画出特征点
+
+initMat.drawContours(counters, new cv.Vec(0, 0, 0))  // 画出轮廓
+
+img.drawCircle(keyPoints[index].point, 15, new cv.Vec(255, 255, 255))
+````
