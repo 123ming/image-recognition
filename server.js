@@ -64,7 +64,7 @@ function draw (img, points) {
         let index = Math.floor(points.length/2)
         x1 = points[index].point.x
         y1 = points[index].point.y
-        img.drawCircle(new cv.Point(x1, y1), 15, new cv.Vec(255, 255, 255))
+        img.drawCircle(new cv.Point(x1, y1), 15, new cv.Vec(0, 0, 255))
     } else {
         x1 = points[0].point.x-10
         y1 = points[0].point.y-10
@@ -73,7 +73,7 @@ function draw (img, points) {
         img.drawRectangle(
             new cv.Point(x1, y1),
             new cv.Point(x2, y2),
-            new cv.Vec(255, 255, 255)
+            new cv.Vec(0, 0, 255)
         )
     }
 }
