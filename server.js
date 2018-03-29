@@ -5,6 +5,8 @@ const url = [
     './static/init/colors-2.jpg',
     './static/init/colors-3.jpg',
     './static/init/colors-4.jpg',
+    './static/init/colors-5.jpg',
+    './static/init/colors-6.jpg',
     './static/init/gary-1.jpg',
     './static/init/gary-2.jpg',
     './static/init/gary-3.jpg',
@@ -65,6 +67,16 @@ function draw (img, points) {
         x1 = points[index].point.x
         y1 = points[index].point.y
         img.drawCircle(new cv.Point(x1, y1), 15, new cv.Vec(0, 0, 255))
+    } else if (points[points.length-1].point.x - points[0].point.x > 100) { // 针对裂缝型瑕疵
+        x1 = points[0].point.x
+        y1 = points[0].point.y
+        x2 = points[points.length-1].point.x
+        y2 = points[points.length-1].point.y-3
+        img.drawRectangle(
+            new cv.Point(x1, y1),
+            new cv.Point(x2, y2),
+            new cv.Vec(0, 0, 255)
+        )
     } else {
         x1 = points[0].point.x-10
         y1 = points[0].point.y-10
