@@ -23,25 +23,7 @@ function imgCut (url) {
     const thrMat = garyMat.canny(200, 150)   // canny边缘检测
 
     const thresholdMat = thrMat.adaptiveThreshold(100, 0, 0, 21, 0)  //这种阈值分割方法是根据灰度差异
-    /*
-        第一个参数，const maxVal = 255    // 阈值化后的非零值<br/>
 
-        第二个参数， 自适应阈值算法种类，
-        0：ADAPTIVE_THRESH_MEAN_C
-        1: ADAPTIVE_THRESH_GAUSSIAN_C
-        const adaptiveMethod = 0
-
-        第三个参数，阈值类型，
-        0: THRESH_BINARY
-        1: THRESH_BINARY_INV
-        const thresholdType = 0
-
-        第四个参数，const blockSize = 9
-        用来计算阈值的象素邻域大小: 3, 5, 7, ...
-
-        第五个参数，const constValue = 0
-        阈值偏移值，函数最终使用的阈值为使用adaptiveMethod计算出的阈值减去C。
-    */
     return thresholdMat
 }
 
@@ -57,7 +39,7 @@ function drawRect (targetMat) {
     )
 }
 
-function draw (img, points) {
+function draw (img, points, i) {
     let x1 = 0
     let y1 = 0
     let x2 = 0
@@ -88,6 +70,8 @@ function draw (img, points) {
             new cv.Vec(0, 0, 255)
         )
     }
+
+    cv.imwrite(`./static/build/new-${i}.png`, img);
 }
 
 /*
@@ -107,13 +91,7 @@ for (let i=0; i<url.length; i++) {
 
     const keyPoints = detector.detect(thrMat)
 
-    const img = cv.drawKeyPoints(initMat, keyPoints)   // 画出特征点
+    let img = cv.drawKeyPoints(initMat, keyPoints)   // 画出特征点
 
-    draw(initMat, keyPoints)
-
-    // save image
-    cv.imwrite(`./static/build/new-${i}.png`, initMat);
-
-    // cv.imshow('t', img)
-    // cv.waitKey(1000)
+    draw(initMat, keyPoints, i)
 }
