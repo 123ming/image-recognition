@@ -7,6 +7,9 @@ const url = [
     './static/init/colors-4.jpg',
     './static/init/colors-5.jpg',
     './static/init/colors-6.jpg',
+    './static/init/colors-7.png',
+    './static/init/colors-8.png',
+    './static/init/colors-9.png',
     './static/init/gary-1.jpg',
     './static/init/gary-2.jpg',
     './static/init/gary-3.jpg',
@@ -85,7 +88,6 @@ function draw (img, points, i) {
       x1 = points[0].point.x
       y1 = points[0].point.y
       img.drawCircle(new cv.Point(x1, y1), 10, new cv.Vec(0, 0, 255))
-      return 0
     } else {
       let coor = []
       if (points.length < 15) {
@@ -141,6 +143,7 @@ function draw (img, points, i) {
 const detector = new cv.SIFTDetector(0, 3, 0.04, 50, 1.6)  // 构造一个sift检测器
 
 for (let i=0; i<url.length; i++) {
+
     const initMat = cv.imread(url[i])
 
     const thrMat = imgCut(url[i])
@@ -152,6 +155,5 @@ for (let i=0; i<url.length; i++) {
     let img = cv.drawKeyPoints(thrMat, keyPoints)   // 画出特征点
 
     // cv.imwrite(`./static/build/new-${i}.png`, img);
-
     draw(initMat, keyPoints, i)
 }
