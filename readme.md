@@ -111,10 +111,3 @@ initMat.drawContours(counters, new cv.Vec(0, 0, 0))  // 画出轮廓
 
 img.drawCircle(keyPoints[index].point, 15, new cv.Vec(255, 255, 255))
 ````
-
-
-瑕疵识别
-
-参数优化
-
-等老师网上找图片
